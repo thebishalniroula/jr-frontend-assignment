@@ -1,8 +1,11 @@
 # To run this project locally
-`Git clone https://github.com/thebishalniroula/jr-frontend-assignment.git`
-`cd jr-frontend-assignment`
-`npm i`
-`npm run dev`
+1. `Git clone https://github.com/thebishalniroula/jr-frontend-assignment.git`
+
+2. `cd jr-frontend-assignment`
+
+3. `npm i`
+
+4. `npm run dev`
 
 
 # Assignment Title: Next.js Interview Round - Advanced Development Task
