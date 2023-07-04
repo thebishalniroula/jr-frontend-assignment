@@ -2,15 +2,16 @@ import Image from "next/image"
 import Link from "next/link"
 
 type AlbumCardPropsType = {
-    id:string
+    id:number
     title:string
     image:string
     artist:{
+      id:number
       name:string
       link:string
       tracklist:string
-      [key:string]:string
-    }
+      [key:string]:string|number
+    }|any
   }
   const AlbumCard = ({id, title, image, artist}:AlbumCardPropsType)=>{
     return (<div className="p-2 border shadow-md">
