@@ -21,7 +21,7 @@ async function getAlbums(id:string) {
         <div>
             <h1 className="text-xl">Title: <span className="font-medium">{title}</span></h1>    
         <p>Release: {release_date}</p>
-        <p>Genres: {genres.data.map((genre:{name:string})=><span>{genre.name}</span>)}</p>
+        <p>Genres: {genres.data.map((genre:{name:string}, idx:number)=><span key={idx}>{genre.name}</span>)}</p>
         </div>
         </div>
         <div className="mt-10"></div>
