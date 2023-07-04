@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 const SearchPage = () => {
     const [tracks, setTracks] = useState([])
     const [searchPhrase, setSearchPhrase] = useState("")
+    const [loading, setLoading] = useState(false)
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         const options = {
@@ -19,12 +20,18 @@ const SearchPage = () => {
             }
           };
             (async ()=>{
-                const res = await axios.request(options)
-                console.log(res);
-                                
-                if (res.status===200) {
-                    setTracks(res.data.data)
-                }    
+                try {
+                    setLoading(true)
+                    const res = await axios.request(options)                                
+                    if (res.status===200) {
+                        setTracks(res.data.data)
+                    }    
+                } catch (error) {
+                    console.log(error);
+                }
+                finally{
+                    setLoading(false)
+                }
             })()
         }
     return (
@@ -36,6 +43,7 @@ const SearchPage = () => {
         </form>
         <div>
         <div className="grid grid-cols-1 gap-2">
+        {loading?<p>Loading...</p>:null}
         {tracks?.map((track:{id:string, title:string, duration:number, explicit_lyrics:boolean, type:string})=>track.type==="track"?<TrackCard key={track.id} title={track.title} duration={track.duration} explicit_lyrics={track.explicit_lyrics}/>:null)}
         </div>
         </div>
